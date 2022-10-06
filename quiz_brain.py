@@ -10,17 +10,17 @@ class QuizBrain:
 	
 	def next_question(self):
 		current_question = self.question_list[self.question_number]
-		print(f"{current_question.category}")
+		print(f"\33[34;4m{current_question.category}\33[0m")
 		self.question_number += 1
-		user_answer = input(f"Q.{self.question_number}: {current_question.text} (True/False)? ")
+		user_answer = input(f"Q.{self.question_number}: {current_question.text}\n(\33[32mTrue\33[0m/\33[31mFalse\33[0m)? ")
 		self.check_answer(user_answer, current_question.answer)
 		
 	def check_answer(self, user_answer, correct_answer):
 		if user_answer.lower() == correct_answer.lower():
-			print("You got it right!")
+			print("\n\33[32mYou got it right!\33[0m")
 			self.score += 1
 		else:
-			print("That's wrong.")
-		print(f"The correct answer was: {correct_answer}.")
-		print(f"Your current score is: {self.score}/{self.question_number}\n")
+			print("\n\33[31mThat's wrong.\33[0m")
+		print(f"The correct answer: \33[1m{correct_answer}\33[0m.")
+		print(f"Your current score: \33[31m{self.score}\33[0m/{self.question_number}\n")
 		
